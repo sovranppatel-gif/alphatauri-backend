@@ -1,0 +1,53 @@
+# ============================================
+# Mock Users Ko Server Mein Add Karne Ke Liye Curl Commands
+# ============================================
+
+# Step 1: Login karke token lein
+curl -X POST http://localhost:3000/api/auth/login ^
+  -H "Content-Type: application/json" ^
+  -d "{\"email\":\"admin@alphatauri.com\",\"password\":\"admin123\"}"
+
+# Response se token copy karo aur <TOKEN> ko replace karo
+
+# ============================================
+# Step 2: Users Create Karo (Replace <TOKEN> with actual token)
+# ============================================
+
+# User 1: Rahul Sharma
+curl -X POST http://localhost:3000/api/users ^
+  -H "Content-Type: application/json" ^
+  -H "Authorization: Bearer <TOKEN>" ^
+  -d "{\"name\":\"Rahul Sharma\",\"email\":\"rahul@alphatauri.com\",\"password\":\"password123\",\"emp_id\":\"EMP001\",\"department\":\"IT\",\"designation\":\"Software Developer\",\"status\":\"Present\",\"phone\":\"+91 98765 43210\",\"role\":\"emp\"}"
+
+# User 2: Ankit Patel
+curl -X POST http://localhost:3000/api/users ^
+  -H "Content-Type: application/json" ^
+  -H "Authorization: Bearer <TOKEN>" ^
+  -d "{\"name\":\"Ankit Patel\",\"email\":\"ankit@alphatauri.com\",\"password\":\"password123\",\"emp_id\":\"EMP002\",\"department\":\"HR\",\"designation\":\"HR Manager\",\"status\":\"Absent\",\"phone\":\"+91 98765 43211\",\"role\":\"emp\"}"
+
+# User 3: Pooja Singh
+curl -X POST http://localhost:3000/api/users ^
+  -H "Content-Type: application/json" ^
+  -H "Authorization: Bearer <TOKEN>" ^
+  -d "{\"name\":\"Pooja Singh\",\"email\":\"pooja@alphatauri.com\",\"password\":\"password123\",\"emp_id\":\"EMP003\",\"department\":\"Finance\",\"designation\":\"Accountant\",\"status\":\"Present\",\"phone\":\"+91 98765 43212\",\"role\":\"emp\"}"
+
+# User 4: Ravi Kumar
+curl -X POST http://localhost:3000/api/users ^
+  -H "Content-Type: application/json" ^
+  -H "Authorization: Bearer <TOKEN>" ^
+  -d "{\"name\":\"Ravi Kumar\",\"email\":\"ravi@alphatauri.com\",\"password\":\"password123\",\"emp_id\":\"EMP004\",\"department\":\"IT\",\"designation\":\"Senior Developer\",\"status\":\"Present\",\"phone\":\"+91 98765 43213\",\"role\":\"emp\"}"
+
+# User 5: Sneha Verma
+curl -X POST http://localhost:3000/api/users ^
+  -H "Content-Type: application/json" ^
+  -H "Authorization: Bearer <TOKEN>" ^
+  -d "{\"name\":\"Sneha Verma\",\"email\":\"sneha@alphatauri.com\",\"password\":\"password123\",\"emp_id\":\"EMP005\",\"department\":\"Marketing\",\"designation\":\"Marketing Manager\",\"status\":\"Absent\",\"phone\":\"+91 98765 43214\",\"role\":\"emp\"}"
+
+# ============================================
+# Test Users (Login Credentials)
+# ============================================
+# 1. Rahul Sharma    - rahul@alphatauri.com  / password123
+# 2. Ankit Patel     - ankit@alphatauri.com  / password123
+# 3. Pooja Singh     - pooja@alphatauri.com  / password123
+# 4. Ravi Kumar      - ravi@alphatauri.com   / password123
+# 5. Sneha Verma     - sneha@alphatauri.com  / password123

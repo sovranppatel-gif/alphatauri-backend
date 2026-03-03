@@ -1,0 +1,5 @@
+{
+  "watch": ["src", "seed"],
+  "ext": "js,json",
+  "exec": "node --env-file=.env src/index.js"
+}
