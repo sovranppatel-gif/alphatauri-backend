@@ -9,12 +9,12 @@
   "engines": {
     "node": ">=18"
   },
-  "scripts": {
-    "start": "node --env-file=.env src/index.js",
-    "dev": "nodemon",
-    "seed": "node --env-file=.env seed/seed.js",
-    "test": "node --test"
-  },
+ "scripts": {
+  "start": "node src/index.js",
+  "dev": "nodemon src/index.js",
+  "seed": "node seed/seed.js",
+  "test": "node --test"
+},
   "dependencies": {
     "bcrypt": "^6.0.0",
     "compression": "^1.8.1",
@@ -37,12 +37,9 @@
     "nodemon": "^3.1.10",
     "supertest": "^7.1.4"
   },
-  "nodemonConfig": {
-    "watch": [
-      "src",
-      "seed"
-    ],
-    "ext": "js,json",
-    "exec": "node --env-file=.env src/index.js"
-  }
+"nodemonConfig": {
+  "watch": ["src","seed"],
+  "ext": "js,json",
+  "exec": "node src/index.js"
+}
 }
