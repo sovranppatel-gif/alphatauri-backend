@@ -18,6 +18,7 @@ import requestRoute from './routes/requestRoute.js';
 
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
+import { networkInterfaces } from 'os';
 
 const app = express();
 
@@ -157,10 +158,28 @@ app.use((err, _req, res, _next) => {
 const PORT = process.env.PORT || 3000;
 const HOST = '0.0.0.0';
 
+// Get local IP address for mobile connections
+function getLocalIP() {
+  const interfaces = networkInterfaces();
+  for (const name of Object.keys(interfaces)) {
+    for (const iface of interfaces[name]) {
+      // Skip internal (loopback) and non-IPv4 addresses
+      // Handle both string ('IPv4') and number (4) formats
+      const isIPv4 = iface.family === 'IPv4' || iface.family === 4;
+      if (isIPv4 && !iface.internal) {
+        return iface.address;
+      }
+    }
+  }
+  return 'localhost';
+}
+
 connectDB()
   .then(() => {
     app.listen(PORT, HOST, () => {
+      const localIP = getLocalIP();
       console.log(`🚀 Server running on http://${HOST}:${PORT}`);
+      console.log(`📱 For mobile devices, use: http://${localIP}:${PORT}`);
     });
   })
   .catch((err) => {
